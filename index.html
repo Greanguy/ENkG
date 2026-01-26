@@ -82,7 +82,7 @@
 
   <!-- TODO: Replace with your paper title and authors -->
   <title>Entropy-Guided k-Guard Sampling for Long-Horizon Autoregressive Video Generation - Han et al. | Academic Research</title>
-  TODO: Author Affiliations
+  
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link rel="apple-touch-icon" href="static/images/favicon.ico">
@@ -204,41 +204,38 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
             <h1 class="title is-1 publication-title">Entropy-Guided k-Guard Sampling for Long-Horizon Autoregressive Video Generation</h1>
             <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
                 <a href="#" target="_blank">Yizhao Han</a><sup>1*</sup>,</span>
                 <span class="author-block">
                   <a href="#" target="_blank">Tianxing Shi</a><sup>1*</sup>,</span>
                   <span class="author-block">
-                    <a href="#" target="_blank">Zhao Wang</a><sup>1</sup>,</span>
+                    <a href="#" target="_blank">Zhao Wang</a><sup>2</sup>,</span>
                       <span class="author-block">
                         <a href="#" target="_blank">Zifan Xu</a><sup>1</sup>,</span>
                           <span class="author-block">
-                            <a href="#" target="_blank">Zhiyuan Pu</a><sup>1</sup>,</span>
+                            <a href="#" target="_blank">Zhiyuan Pu</a><sup>2</sup>,</span>
                             <span class="author-block">
-                              <a href="#" target="_blank">Mingxiao Li</a><sup>1</sup>,</span>
+                              <a href="#" target="_blank">Mingxiao Li</a><sup>3</sup>,</span>
                               <span class="author-block">
-                                <a href="#" target="_blank">Qian Zhang</a><sup>1</sup>,</span>
+                                <a href="#" target="_blank">Qian Zhang</a><sup>3</sup>,</span>
                                 <span class="author-block">
-                                  <a href="#" target="_blank">Wei Yin</a><sup>1‡</sup>,</span>
+                                  <a href="#" target="_blank">Wei Yin</a><sup>3‡</sup>,</span>
                                   <span class="author-block">
                                     <a href="#" target="_blank">Xiao-Xiao Long</a><sup>1†</sup>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block"><sup>1</sup>Nanjing University<br></span>
-                    <!-- TODO: Remove this line if no equal contribution -->
+                    <span class="author-block"><sup>1</sup>Nanjing University, School of Artificial Intelligence<br></span>
+                    <span class="author-block"><sup>2</sup>China Mobile Zijin Research Institute<br></span>
+                    <span class="author-block"><sup>3</sup>Horizon Robotics<br></span>
                     <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution<br><sup>†</sup>Corresponding Author<br><sup>‡</sup>Corresponding Author</small></span>
                   </div>
 
                   <!-- <div class="column has-text-centered">
                     <div class="publication-links"> -->
-                         <!-- TODO: Update with your arXiv paper ID -->
                       <!-- <span class="link-block">
                         <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
@@ -249,7 +246,6 @@
                       </a>
                     </span> -->
 
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
                     <!-- <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
@@ -259,7 +255,6 @@
                       <span>Supplementary</span>
                     </a>
                   </span> -->
-                <!-- TODO: Update with your arXiv paper ID -->
                 <span class="link-block">
                   <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
@@ -268,7 +263,6 @@
                   </span>
                   <span>arXiv</span>
 
-                  <!-- TODO: Replace with your GitHub repository URL -->
                   <span class="link-block">
                     <a href="https://github.com/YOUR REPO HERE" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
@@ -610,7 +604,7 @@
     <!-- k-Guard ablation -->
     <div class="box video-comparison">
       <h3 class="title is-5 has-text-centered">Impact of k-Guard Design</h3>
-      <p class="has-text-centered" style="margin-bottom: 1.5rem;">
+      <p class="has-text-left" style="margin-bottom: 1.5rem;">
         The k-guard enforces minimal exploration even in low-entropy regimes, mitigating degenerate static rollouts and frame-freezing.
       </p>
       <div class="columns is-mobile">
@@ -621,7 +615,7 @@
           </video>
         </div>
         <div class="column">
-          <p class="has-text-centered"><strong>With k-Guard (Ours)</strong></p>
+          <p class="has-text-left"><strong>With k-Guard (Ours)</strong></p>
           <video id="kguard-ours" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
             <source src="static/videos/fig7-ours.mp4" type="video/mp4">
           </video>
