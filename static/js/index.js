@@ -121,6 +121,65 @@ function setupVideoCarouselAutoplay() {
 
 // Synchronized video playback for ablation study comparisons
 function setupSyncedVideoPlayback() {
+    // Helper function to sync two videos
+    function syncVideos(video1, video2, playbackRate = 1.0) {
+        if (!video1 || !video2) return;
+        
+        // Set playback rate (fps control)
+        video1.playbackRate = playbackRate;
+        video2.playbackRate = playbackRate;
+        
+        video1.addEventListener('play', function() {
+            video2.play();
+        });
+        video1.addEventListener('pause', function() {
+            video2.pause();
+        });
+        video1.addEventListener('timeupdate', function() {
+            if (Math.abs(video1.currentTime - video2.currentTime) > 0.5) {
+                video2.currentTime = video1.currentTime;
+            }
+        });
+        
+        video2.addEventListener('play', function() {
+            video1.play();
+        });
+        video2.addEventListener('pause', function() {
+            video1.pause();
+        });
+        video2.addEventListener('timeupdate', function() {
+            if (Math.abs(video2.currentTime - video1.currentTime) > 0.5) {
+                video1.currentTime = video2.currentTime;
+            }
+        });
+    }
+    
+    // Teaser long-horizon comparisons (with 5 fps playback rate)
+    const long12Base = document.getElementById('long-12-base');
+    const long12Ours = document.getElementById('long-12-ours');
+    const long16Base = document.getElementById('long-16-base');
+    const long16Ours = document.getElementById('long-16-ours');
+    const long30Base = document.getElementById('long-30-base');
+    const long30Ours = document.getElementById('long-30-ours');
+    
+    // Sync teaser videos with 5 fps playback (assuming original is ~30fps, 5/30 ≈ 0.167)
+    syncVideos(long12Base, long12Ours, 0.167);
+    syncVideos(long16Base, long16Ours, 0.167);
+    syncVideos(long30Base, long30Ours, 0.167);
+    
+    // Results carousel comparisons (with normal 30 fps playback rate)
+    const drivingworldK30 = document.getElementById('drivingworld-k30');
+    const drivingworldOurs = document.getElementById('drivingworld-ours');
+    const vavimGreedy = document.getElementById('vavim-greedy');
+    const vavimOurs = document.getElementById('vavim-ours');
+    const cosmosTopp = document.getElementById('cosmos-topp');
+    const cosmosOurs = document.getElementById('cosmos-ours');
+    
+    // Sync results videos with normal playback (30 fps, playbackRate = 1.0)
+    syncVideos(drivingworldK30, drivingworldOurs);
+    syncVideos(vavimGreedy, vavimOurs);
+    syncVideos(cosmosTopp, cosmosOurs);
+    
     // Entropy-adaptive guidance comparison
     const entropyWoentropy = document.getElementById('entropy-woentropy');
     const entropyOurs = document.getElementById('entropy-ours');
@@ -129,59 +188,9 @@ function setupSyncedVideoPlayback() {
     const kguardWokguard = document.getElementById('kguard-wokguard');
     const kguardOurs = document.getElementById('kguard-ours');
     
-    // Setup entropy comparison sync
-    if (entropyWoentropy && entropyOurs) {
-        entropyWoentropy.addEventListener('play', function() {
-            entropyOurs.play();
-        });
-        entropyWoentropy.addEventListener('pause', function() {
-            entropyOurs.pause();
-        });
-        entropyWoentropy.addEventListener('timeupdate', function() {
-            if (Math.abs(entropyWoentropy.currentTime - entropyOurs.currentTime) > 0.5) {
-                entropyOurs.currentTime = entropyWoentropy.currentTime;
-            }
-        });
-        
-        entropyOurs.addEventListener('play', function() {
-            entropyWoentropy.play();
-        });
-        entropyOurs.addEventListener('pause', function() {
-            entropyWoentropy.pause();
-        });
-        entropyOurs.addEventListener('timeupdate', function() {
-            if (Math.abs(entropyOurs.currentTime - entropyWoentropy.currentTime) > 0.5) {
-                entropyWoentropy.currentTime = entropyOurs.currentTime;
-            }
-        });
-    }
-    
-    // Setup k-Guard comparison sync
-    if (kguardWokguard && kguardOurs) {
-        kguardWokguard.addEventListener('play', function() {
-            kguardOurs.play();
-        });
-        kguardWokguard.addEventListener('pause', function() {
-            kguardOurs.pause();
-        });
-        kguardWokguard.addEventListener('timeupdate', function() {
-            if (Math.abs(kguardWokguard.currentTime - kguardOurs.currentTime) > 0.5) {
-                kguardOurs.currentTime = kguardWokguard.currentTime;
-            }
-        });
-        
-        kguardOurs.addEventListener('play', function() {
-            kguardWokguard.play();
-        });
-        kguardOurs.addEventListener('pause', function() {
-            kguardWokguard.pause();
-        });
-        kguardOurs.addEventListener('timeupdate', function() {
-            if (Math.abs(kguardOurs.currentTime - kguardWokguard.currentTime) > 0.5) {
-                kguardWokguard.currentTime = kguardOurs.currentTime;
-            }
-        });
-    }
+    // Setup ablation study comparisons sync (normal playback rate)
+    syncVideos(entropyWoentropy, entropyOurs);
+    syncVideos(kguardWokguard, kguardOurs);
 }
 
 $(document).ready(function() {
