@@ -1,0 +1,61 @@
+# macOS 系统文件
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 资源管理器元数据
+._*
+
+# Spotlight 索引文件
+.Spotlight-V100
+
+# 目录服务存储
+.Trashes
+
+# 用户特定的文件
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# macOS 快照
+.fseventsd
+
+# macOS 缓存文件
+*.swp
+*.swo
+
+# macOS 应用程序日志
+*.log
+
+# Xcode
+*.xcuserstate
+*.xcworkspace
+*.xcuserdata
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+# Cocoapods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# SwiftPM
+.build/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Archives
+*.xcarchive
+
+# Playground
+timeline.xctimeline
+playground.xcworkspace

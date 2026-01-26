@@ -6,13 +6,13 @@
   
   <!-- Primary Meta Tags -->
   <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="Entropy-Guided Nucleus Sampling with k-Guard for Long-Horizon Autoregressive Video Generation">
+  <meta name="title" content="Entropy-Guided k-Guard Sampling for Long-Horizon Autoregressive Video Generation">
   <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <meta name="description" content="An entropy-guided sampling strategy (ENkG) that adaptively selects token candidates based on entropy to improve long-horizon autoregressive video generation quality.">
   <!-- TODO: Add 5-10 relevant keywords for your research area -->
   <meta name="keywords" content="Autoregressive, computer vision, AI">
   <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
+  <meta name="author" content="Yizhao Han, Tianxing Shi, Zhao Wang, Zifan Xu, Zhiyuan Pu, Mingxiao Li, Qian Zhang, Wei Yin, Xiao-Xiao Long">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
   
@@ -21,9 +21,9 @@
   <!-- TODO: Replace with your institution or lab name -->
   <meta property="og:site_name" content="NJU-3DV">
   <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="Entropy-Guided Nucleus Sampling with k-Guard for Long-Horizon Autoregressive Video Generation">
+  <meta property="og:title" content="Entropy-Guided k-Guard Sampling for Long-Horizon Autoregressive Video Generation">
   <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <meta property="og:description" content="An entropy-guided sampling strategy (ENkG) that adaptively selects token candidates based on entropy to improve long-horizon autoregressive video generation quality.">
   <!-- TODO: Replace with your actual website URL -->
   <meta property="og:url" content="https://greanguy.github.io/ENkG/">
   <!-- TODO: Create a 1200x630px preview image and update path -->
@@ -44,17 +44,24 @@
   <!-- TODO: Replace with first author's Twitter handle -->
   <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
   <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
+  <meta name="twitter:title" content="Entropy-Guided k-Guard Sampling for Long-Horizon Autoregressive Video Generation">
   <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <meta name="twitter:description" content="An entropy-guided sampling strategy (ENkG) that adaptively selects token candidates based on entropy to improve long-horizon autoregressive video generation quality.">
   <!-- TODO: Same as social preview image above -->
   <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
   <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
 
   <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
+  <meta name="citation_title" content="Entropy-Guided k-Guard Sampling for Long-Horizon Autoregressive Video Generation">
+  <meta name="citation_author" content="Han, Yizhao">
+  <meta name="citation_author" content="Shi, Tianxing">
+  <meta name="citation_author" content="Wang, Zhao">
+  <meta name="citation_author" content="Xu, Zifan">
+  <meta name="citation_author" content="Pu, Zhiyuan">
+  <meta name="citation_author" content="Li, Mingxiao">
+  <meta name="citation_author" content="Zhang, Qian">
+  <meta name="citation_author" content="Yin, Wei">
+  <meta name="citation_author" content="Long, Xiao-Xiao">
   <meta name="citation_publication_date" content="2024">
   <meta name="citation_conference_title" content="CONFERENCE_NAME">
   <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
@@ -74,8 +81,8 @@
 
 
   <!-- TODO: Replace with your paper title and authors -->
-  <title>Entropy-Guided Nucleus Sampling with k-Guard for Long-Horizon Autoregressive Video Generation - AUTHOR_NAMES | Academic Research</title>
-  
+  <title>Entropy-Guided k-Guard Sampling for Long-Horizon Autoregressive Video Generation - Han et al. | Academic Research</title>
+  TODO: Author Affiliations
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link rel="apple-touch-icon" href="static/images/favicon.ico">
@@ -108,7 +115,11 @@
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
-  
+  <!-- MathJax (render $...$ and \(...\)) -->
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <!-- Structured Data for Academic Papers -->
   <script type="application/ld+json">
   {
@@ -194,33 +205,41 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Nucleus Sampling</h1>
+            <h1 class="title is-1 publication-title">Entropy-Guided k-Guard Sampling for Long-Horizon Autoregressive Video Generation</h1>
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <a href="#" target="_blank">Yizhao Han</a><sup>1*</sup>,</span>
                 <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+                  <a href="#" target="_blank">Tianxing Shi</a><sup>1*</sup>,</span>
                   <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>,</span>
+                    <a href="#" target="_blank">Zhao Wang</a><sup>1</sup>,</span>
                       <span class="author-block">
-                        <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>,</span>
+                        <a href="#" target="_blank">Zifan Xu</a><sup>1</sup>,</span>
                           <span class="author-block">
-                            <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                            <a href="#" target="_blank">Zhiyuan Pu</a><sup>1</sup>,</span>
+                            <span class="author-block">
+                              <a href="#" target="_blank">Mingxiao Li</a><sup>1</sup>,</span>
+                              <span class="author-block">
+                                <a href="#" target="_blank">Qian Zhang</a><sup>1</sup>,</span>
+                                <span class="author-block">
+                                  <a href="#" target="_blank">Wei Yin</a><sup>1‡</sup>,</span>
+                                  <span class="author-block">
+                                    <a href="#" target="_blank">Xiao-Xiao Long</a><sup>1†</sup>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
                     <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Nanjing University<br>XXXXXXXXXX</span>
+                    <span class="author-block"><sup>1</sup>Nanjing University<br></span>
                     <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution<br><sup>†</sup>Corresponding Author<br><sup>‡</sup>Corresponding Author</small></span>
                   </div>
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
+                  <!-- <div class="column has-text-centered">
+                    <div class="publication-links"> -->
                          <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
+                      <!-- <span class="link-block">
                         <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
@@ -228,10 +247,10 @@
                         </span>
                         <span>Paper</span>
                       </a>
-                    </span>
+                    </span> -->
 
                     <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
+                    <!-- <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
@@ -239,7 +258,15 @@
                       </span>
                       <span>Supplementary</span>
                     </a>
+                  </span> -->
+                <!-- TODO: Update with your arXiv paper ID -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
                   </span>
+                  <span>arXiv</span>
 
                   <!-- TODO: Replace with your GitHub repository URL -->
                   <span class="link-block">
@@ -251,15 +278,6 @@
                     <span>Code(Coming Soon)</span>
                   </a>
                 </span>
-
-                <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
                 </a>
               </span>
             </div>
@@ -271,38 +289,27 @@
 </section>
 
 
+
 <!-- Teaser video-->
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
+      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata"> -->
         <!-- TODO: Add your video file path here -->
         <source src="static/videos/banner_video.mp4" type="video/mp4">
       </video>
       <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
+      <!-- <h2 class="subtitle has-text-centered">
+        We propose Entropy-Guided k-Guard (ENkG), a novel sampling strategy that adapts token candidate selection based on entropy to improve long-horizon autoregressive video generation quality and stability.
+      </h2> -->
     </div>
   </div>
 </section>
 <!-- End teaser video -->
 
 <!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <p>
-        <img src="static/images/entropy_spread-1.png" alt="Learning from model weights" class="blend-img-background center-image" style="max-width: 100%; height: auto;" loading="lazy">
-      </p>
-      <br>
-      <p>
-        The results illustrate the phenomenon of entropy collapse in standard AR decoding, where blue regions indicate low entropy and red regions indicate high entropy. Our method effectively alleviates this issue. 
-      </p>
-    </div>
-  </div>
-</section>
+
 <!-- End teaser video -->
 
 <!-- Paper abstract -->
@@ -323,27 +330,17 @@
 </section>
 <!-- End paper abstract -->
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <h2 class="title is-3">The overall illustration of our sampling strategy</h2>
-      <p>
-        <img src="static/images/diagram_page-0001.jpg" alt="Learning from model weights" class="blend-img-background center-image" style="max-width: 100%; height: auto;" loading="lazy">
-      </p>
-      <br>
-      <p>
-        TODO: NEED SOME DISCRIPTION HERE !!!
-      </p>
-    </div>
-  </div>
-</section>
 
-<section class="hero teaser">
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Motivation</h2>
+    <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <h2 class="title is-3">The visualization of entropy heatmaps</h2>
       <p>
-        <img src="static/images/entropy_structure_page-0001.jpg" alt="Learning from model weights" class="blend-img-background center-image" style="max-width: 100%; height: auto;" loading="lazy">
+        <img src="static/images/motivation_entropy_structure.jpg" alt="Learning from model weights" class="blend-img-background center-image" style="max-width: 100%; height: auto;" loading="lazy">
       </p>
       <br>
       <p>
@@ -352,55 +349,166 @@
     </div>
   </div>
 </section>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <p>
+        <img src="static/images/motivation_entropy_spread.png" alt="Learning from model weights" class="blend-img-background center-image" style="max-width: 100%; height: auto;" loading="lazy">
+      </p>
+      <br>
+      <p>
+        This figure illustrates the phenomenon of entropy collapse in static AR sampling, where blue regions indicate low entropy and red regions indicate high entropy. Our method effectively alleviates this issue. 
+      </p>
+    </div>
+  </div>
+</section>
+    <p class="is-size-5" style="margin-top: 0.75rem;">
+  We study why static top-$k$/top-$p$ decoding breaks in autoregressive video generation and propose
+  <b>Entropy-Guided k-Guard (ENkG)</b>, a <b>training-free</b>, <b>model-agnostic</b> sampler that adapts token candidate sets to predictive entropy to
+  mitigate <i>error accumulation</i> and <i>entropy collapse</i>.
+</p>
+
+    <div class="columns is-multiline" style="margin-top: 1rem;">
+      <div class="column is-4">
+        <div class="box" style="height:100%;">
+          <h3 class="title is-5">F1. Flat token distributions</h3>
+          <p>
+            Video tokens have low semantic density and high spatio-temporal redundancy, producing flatter predictive distributions.
+            A fixed candidate size (top-$k$/top-$p$) becomes brittle and amplifies early mistakes.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-4">
+        <div class="box" style="height:100%;">
+          <h3 class="title is-5">F2. Entropy aligns with structure</h3>
+          <p>
+            High-entropy regions correspond to repeating textures (sky/foliage/road), while low-entropy regions cluster around
+            structured content (boundaries, edges, lane markings). Static truncation ignores this structure.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-4">
+        <div class="box" style="height:100%;">
+          <h3 class="title is-5">F3. Entropy collapse in long horizons</h3>
+          <p>
+            As generation proceeds, low-entropy regions expand and frame-average entropy drops, causing texture wash-out,
+            over-smoothing, and degenerate dynamics.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+     <h2 class="title is-3 has-text-centered">Method</h2>
+    <p>
+      Our sampling strategy adapts the <strong>token-wise candidate set</strong> based on the
+      <strong>(normalized) entropy</strong> of the model’s <strong>predictive distribution</strong>
+      at each decoding step. For <strong>low-entropy</strong> tokens (e.g., static background regions),
+      we sample from a <strong>smaller candidate set</strong> to reduce stochastic artifacts.
+      For <strong>high-entropy</strong> tokens (e.g., dynamic foreground regions), we expand the
+      candidate set to promote exploration and alleviate <strong>error accumulation</strong>
+      during long <strong>autoregressive decoding</strong>.
+    </p>
+
+  <figure class="figure">
+    <img
+      src="static/images/method.jpg"
+      alt="Comparison of truncation-based sampling strategies: Top-k, Top-p, and ENkG."
+      loading="lazy"
+    />
+    <figcaption>
+      <strong> ENkG compared to fixed truncation sampling strategies.</strong>
+      (b) <strong>Top-k</strong> samples from a fixed-size set of the <em>k</em> most probable tokens.
+      (c) <strong>Top-p (nucleus)</strong> samples from the smallest set whose cumulative probability
+      exceeds a fixed threshold. (a) <strong>ENkG</strong> sets a token-dependent nucleus threshold
+      using predictive entropy and includes a small <strong>k-guard</strong> of highest-probability
+      tokens, then samples from the renormalized distribution over the resulting candidate set.
+    </figcaption>
+  </figure>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+     <h2 class="title is-3 has-text-centered">Results</h2>
+    
 <!-- Video carousel -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Visual results of our strategy</h2>
+      <h2 class="title is-4 has-text-centered">Visual Comparisons</h2>
+  <p class="has-text-left" style="margin-bottom: 1rem;">
+        <b>Qualitatively, ENkG reduces texture wash-out, color drift, and frame freezing.</b>
+  Baseline decoding (static top-<i>k</i>/top-<i>p</i>/greedy) often yields blurred road markings and vegetation,
+  unnatural color shifts, or degenerate near-static rollouts; ENkG preserves high-frequency details and maintains plausible motion over time.
+</p>
+
       <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/fig1-ours.mp4" type="video/mp4">
-          </video>
+        <!-- DrivingWorld Comparison -->
+        <div class="item video-comparison">
+          <h3 class="title is-5 has-text-centered">DrivingWorld: Top-k (k=30) vs ENkG</h3>
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-centered"><strong>Top-k (k=30)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/drivingworld-k30.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/drivingworld-ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
         </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/fig4-drivingworld-ours.mp4" type="video/mp4">
-          </video>
+
+        <!-- VaVIM Comparison -->
+        <div class="item video-comparison">
+          <h3 class="title is-5 has-text-centered">VaVIM: Greedy vs ENkG</h3>
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-centered"><strong>Greedy</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/fig4-vavim-greedy.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/fig4-vavim-ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
         </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/fig4-vavim-ours.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video4">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video4" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/fig5-cosmos-ours.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video5">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video5" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/fig6-ours.MP4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video6">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video6" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/fig7-ours.mp4" type="video/mp4">
-          </video>
+
+        <!-- Cosmos Comparison -->
+        <div class="item video-comparison">
+          <h3 class="title is-5 has-text-centered">Cosmos: Top-p (p=0.8) vs ENkG</h3>
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-centered"><strong>Top-p (p=0.8)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/fig5-cosmos-topp08.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/fig5-cosmos-ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -409,29 +517,125 @@
 <!-- End video carousel -->
 
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <h2 class="title is-3">The ablation study results</h2>
-      <p>
-        <img src="static/images/abs_entropy_page-0001.jpg" alt="Learning from model weights" class="blend-img-background center-image" style="max-width: 100%; height: auto;" loading="lazy">
-      </p>
-      <br>
-      <p>
-        Qualitative analysis of entropy-adaptive guidance. Without this design, the video model suffers from collapse.
-      </p>
-      <br>
-      <br>
-      <p>
-        <img src="static/images/abs_guardn_page-0001.jpg" alt="Learning from model weights" class="blend-img-background center-image" style="max-width: 100%; height: auto;" loading="lazy">
-      </p>
-      <br>
-      <p>
-        Qualitative analysis of <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="0" style="font-size: 123.5%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D447 TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi></math></mjx-assistive-mml></mjx-container>-guard design. Without it, video model suffers from frame-freezing problem.
+    <div class="content">
+      <h3 class="title is-4 has-text-centered">Quantitative Results</h3>
+        <p class="has-text-left" style="margin-bottom: 1rem;">
+       <b>Quantitatively, ENkG yields consistent gains on both DiverseDrive and nuPlan.</b>
+  Across DrivingWorld, VaVIM, and Cosmos, ENkG reduces FVD/FID while remaining training-free,
+  indicating improved temporal realism and per-frame fidelity under identical generation settings.
+      <div class="table-container">
+        <table class="table is-striped is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th rowspan="2">Model</th>
+              <th colspan="5">DiverseDrive</th>
+              <th colspan="5">nuPlan</th>
+            </tr>
+            <tr>
+              <th>FVD↓</th><th>FID↓</th><th>LPIPS↓</th><th>PSNR↑</th><th>SSIM↑</th>
+              <th>FVD↓</th><th>FID↓</th><th>LPIPS↓</th><th>PSNR↑</th><th>SSIM↑</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DrivingWorld (top-k 30)</td>
+              <td>696</td><td>61.78</td><td>0.401</td><td>14.03</td><td>0.43</td>
+              <td>583</td><td>37.80</td><td>0.380</td><td>14.22</td><td>0.39</td>
+            </tr>
+            <tr>
+              <td><b>DrivingWorld (+ENkG)</b></td>
+              <td><b>489</b></td><td><b>26.61</b></td><td><b>0.350</b></td><td><b>15.87</b></td><td><b>0.45</b></td>
+              <td><b>565</b></td><td><b>31.34</b></td><td><b>0.360</b></td><td><b>14.96</b></td><td><b>0.40</b></td>
+            </tr>
+            <tr>
+              <td>VaVIM (greedy)</td>
+              <td>1473</td><td>91.75</td><td>0.396</td><td>16.46</td><td>0.50</td>
+              <td>927</td><td>65.26</td><td>0.315</td><td>14.82</td><td>0.44</td>
+            </tr>
+            <tr>
+              <td><b>VaVIM (+ENkG)</b></td>
+              <td><b>1055</b></td><td><b>46.76</b></td><td><b>0.426</b></td><td><b>14.76</b></td><td><b>0.46</b></td>
+              <td><b>1031</b></td><td><b>41.60</b></td><td><b>0.327</b></td><td><b>14.43</b></td><td><b>0.42</b></td>
+            </tr>
+            <tr>
+              <td>Cosmos (top-p 0.8)*</td>
+              <td>1260</td><td>87.82</td><td>0.48</td><td>16.56</td><td>0.54</td>
+              <td>814</td><td>80.45</td><td>0.29</td><td>17.52</td><td>0.54</td>
+            </tr>
+            <tr>
+              <td><b>Cosmos (+ENkG)*</b></td>
+              <td><b>1132</b></td><td><b>84.67</b></td><td><b>0.47</b></td><td><b>16.61</b></td><td><b>0.53</b></td>
+              <td><b>801</b></td><td><b>75.01</b></td><td><b>0.29</b></td><td><b>17.81</b></td><td><b>0.55</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="is-size-7">
+        * Cosmos uses a fixed 33-frame generation window; metrics are computed on the first 33 frames (others use 75).
       </p>
     </div>
   </div>
+
+    </div>
+  </div>
 </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-4 has-text-centered">Ablation Study</h3>
+
+    <!-- Entropy-adaptive guidance ablation -->
+    <div class="box video-comparison" style="margin-bottom: 2rem;">
+      <h3 class="title is-5 has-text-centered">Impact of Entropy-Adaptive Guidance</h3>
+      <p class="has-text-centered" style="margin-bottom: 1.5rem;">
+        Removing entropy guidance leads to texture decay and color shifting, consistent with entropy collapse dynamics.
+      </p>
+      <div class="columns is-mobile">
+        <div class="column">
+          <p class="has-text-centered"><strong>Without Entropy Guidance</strong></p>
+          <video id="entropy-woentropy" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
+            <source src="static/videos/fig6-woentropy.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column">
+          <p class="has-text-centered"><strong>With Entropy Guidance (Ours)</strong></p>
+          <video id="entropy-ours" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
+            <source src="static/videos/fig6-ours.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- k-Guard ablation -->
+    <div class="box video-comparison">
+      <h3 class="title is-5 has-text-centered">Impact of k-Guard Design</h3>
+      <p class="has-text-centered" style="margin-bottom: 1.5rem;">
+        The k-guard enforces minimal exploration even in low-entropy regimes, mitigating degenerate static rollouts and frame-freezing.
+      </p>
+      <div class="columns is-mobile">
+        <div class="column">
+          <p class="has-text-centered"><strong>Without k-Guard</strong></p>
+          <video id="kguard-wokguard" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
+            <source src="static/videos/fig7-wokguard.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column">
+          <p class="has-text-centered"><strong>With k-Guard (Ours)</strong></p>
+          <video id="kguard-ours" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
+            <source src="static/videos/fig7-ours.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
 
 
 <!--BibTex citation -->
@@ -444,12 +648,11 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
+      <pre id="bibtex-code"><code>@article{Han2024ENkG,
+  title={Entropy-Guided k-Guard Sampling for Long-Horizon Autoregressive Video Generation},
+  author={Han, Yizhao and Shi, Tianxing and Wang, Zhao and Xu, Zifan and Pu, Zhiyuan and Li, Mingxiao and Zhang, Qian and Yin, Wei and Long, Xiao-Xiao},
+  journal={arXiv preprint arXiv:2406.xxxxx},
+  year={2024}
 }</code></pre>
     </div>
 </section>
