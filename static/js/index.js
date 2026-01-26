@@ -119,6 +119,71 @@ function setupVideoCarouselAutoplay() {
     });
 }
 
+// Synchronized video playback for ablation study comparisons
+function setupSyncedVideoPlayback() {
+    // Entropy-adaptive guidance comparison
+    const entropyWoentropy = document.getElementById('entropy-woentropy');
+    const entropyOurs = document.getElementById('entropy-ours');
+    
+    // k-Guard comparison
+    const kguardWokguard = document.getElementById('kguard-wokguard');
+    const kguardOurs = document.getElementById('kguard-ours');
+    
+    // Setup entropy comparison sync
+    if (entropyWoentropy && entropyOurs) {
+        entropyWoentropy.addEventListener('play', function() {
+            entropyOurs.play();
+        });
+        entropyWoentropy.addEventListener('pause', function() {
+            entropyOurs.pause();
+        });
+        entropyWoentropy.addEventListener('timeupdate', function() {
+            if (Math.abs(entropyWoentropy.currentTime - entropyOurs.currentTime) > 0.5) {
+                entropyOurs.currentTime = entropyWoentropy.currentTime;
+            }
+        });
+        
+        entropyOurs.addEventListener('play', function() {
+            entropyWoentropy.play();
+        });
+        entropyOurs.addEventListener('pause', function() {
+            entropyWoentropy.pause();
+        });
+        entropyOurs.addEventListener('timeupdate', function() {
+            if (Math.abs(entropyOurs.currentTime - entropyWoentropy.currentTime) > 0.5) {
+                entropyWoentropy.currentTime = entropyOurs.currentTime;
+            }
+        });
+    }
+    
+    // Setup k-Guard comparison sync
+    if (kguardWokguard && kguardOurs) {
+        kguardWokguard.addEventListener('play', function() {
+            kguardOurs.play();
+        });
+        kguardWokguard.addEventListener('pause', function() {
+            kguardOurs.pause();
+        });
+        kguardWokguard.addEventListener('timeupdate', function() {
+            if (Math.abs(kguardWokguard.currentTime - kguardOurs.currentTime) > 0.5) {
+                kguardOurs.currentTime = kguardWokguard.currentTime;
+            }
+        });
+        
+        kguardOurs.addEventListener('play', function() {
+            kguardWokguard.play();
+        });
+        kguardOurs.addEventListener('pause', function() {
+            kguardWokguard.pause();
+        });
+        kguardOurs.addEventListener('timeupdate', function() {
+            if (Math.abs(kguardOurs.currentTime - kguardWokguard.currentTime) > 0.5) {
+                kguardWokguard.currentTime = kguardOurs.currentTime;
+            }
+        });
+    }
+}
+
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
 
@@ -138,5 +203,8 @@ $(document).ready(function() {
     
     // Setup video autoplay for carousel
     setupVideoCarouselAutoplay();
+    
+    // Setup synchronized video playback for ablation study
+    setupSyncedVideoPlayback();
 
 })

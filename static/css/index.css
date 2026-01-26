@@ -749,5 +749,55 @@ a:focus {
   }
 }
 
+/* Video Comparison Styles */
+.video-comparison {
+  margin: 2rem 0;
+}
 
+.video-comparison .columns.is-mobile {
+  gap: 1rem;
+}
 
+.video-comparison video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.video-comparison video:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.video-comparison .column {
+  padding: 0.5rem;
+}
+
+.video-comparison p {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Carousel item spacing */
+.carousel .item {
+  padding: 1rem;
+}
+
+.carousel .item h3 {
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive video containers */
+@media screen and (max-width: 768px) {
+  .video-comparison .columns.is-mobile {
+    flex-direction: column;
+  }
+  
+  .video-comparison .column {
+    width: 100% !important;
+    margin-bottom: 1rem;
+  }
+}

@@ -82,7 +82,7 @@
 
   <!-- TODO: Replace with your paper title and authors -->
   <title>Entropy-Guided k-Guard Sampling for Long-Horizon Autoregressive Video Generation - Han et al. | Academic Research</title>
-  
+  TODO: Author Affiliations
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link rel="apple-touch-icon" href="static/images/favicon.ico">
@@ -441,14 +441,88 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
      <h2 class="title is-3 has-text-centered">Results</h2>
+    
+<!-- Video carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-4 has-text-centered">Visual Comparisons</h2>
+  <p class="has-text-left" style="margin-bottom: 1rem;">
+        <b>Qualitatively, ENkG reduces texture wash-out, color drift, and frame freezing.</b>
+  Baseline decoding (static top-<i>k</i>/top-<i>p</i>/greedy) often yields blurred road markings and vegetation,
+  unnatural color shifts, or degenerate near-static rollouts; ENkG preserves high-frequency details and maintains plausible motion over time.
+</p>
+
+      <div id="results-carousel" class="carousel results-carousel">
+        <!-- DrivingWorld Comparison -->
+        <div class="item video-comparison">
+          <h3 class="title is-5 has-text-centered">DrivingWorld: Top-k (k=30) vs ENkG</h3>
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-centered"><strong>Top-k (k=30)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/drivingworld-k30.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/drivingworld-ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- VaVIM Comparison -->
+        <div class="item video-comparison">
+          <h3 class="title is-5 has-text-centered">VaVIM: Greedy vs ENkG</h3>
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-centered"><strong>Greedy</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/fig4-vavim-greedy.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/fig4-vavim-ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cosmos Comparison -->
+        <div class="item video-comparison">
+          <h3 class="title is-5 has-text-centered">Cosmos: Top-p (p=0.8) vs ENkG</h3>
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-centered"><strong>Top-p (p=0.8)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/fig5-cosmos-topp08.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/fig5-cosmos-ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End video carousel -->
 
 
     <div class="content">
-      <!-- <p>
-        ENkG yields consistent gains across multiple AR video generation models, improving both perceptual fidelity (FID/LPIPS)
-        and long-horizon stability (FVD), without retraining.
-      </p> -->
-
+      <h3 class="title is-4 has-text-centered">Quantitative Results</h3>
+        <p class="has-text-left" style="margin-bottom: 1rem;">
+       <b>Quantitatively, ENkG yields consistent gains on both DiverseDrive and nuPlan.</b>
+  Across DrivingWorld, VaVIM, and Cosmos, ENkG reduces FVD/FID while remaining training-free,
+  indicating improved temporal realism and per-frame fidelity under identical generation settings.
       <div class="table-container">
         <table class="table is-striped is-hoverable is-fullwidth">
           <thead>
@@ -509,81 +583,46 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h3 class="title is-4 has-text-centered">Component Analysis</h3>
+    <h3 class="title is-4 has-text-centered">Ablation Study</h3>
 
-    <div class="columns is-centered">
-      <div class="column is-10">
-        <div class="box">
-          <h3 class="title is-5">Entropy-adaptive guidance prevents long-horizon collapse</h3>
-          <p>
-            Removing entropy guidance leads to texture decay and color shifting, consistent with entropy collapse dynamics.
-          </p>
-          <img src="static/images/ablation_wo_entropy.jpg"
-               alt="Ablation: without entropy guidance"
-               style="max-width:100%; height:auto; border-radius:12px;" loading="lazy">
+    <!-- Entropy-adaptive guidance ablation -->
+    <div class="box video-comparison" style="margin-bottom: 2rem;">
+      <h3 class="title is-5 has-text-centered">Impact of Entropy-Adaptive Guidance</h3>
+      <p class="has-text-centered" style="margin-bottom: 1.5rem;">
+        Removing entropy guidance leads to texture decay and color shifting, consistent with entropy collapse dynamics.
+      </p>
+      <div class="columns is-mobile">
+        <div class="column">
+          <p class="has-text-centered"><strong>Without Entropy Guidance</strong></p>
+          <video id="entropy-woentropy" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
+            <source src="static/videos/fig6-woentropy.mp4" type="video/mp4">
+          </video>
         </div>
-
-        <div class="box">
-          <h3 class="title is-5">k-guard prevents frame freezing</h3>
-          <p>
-            The k-guard enforces minimal exploration even in low-entropy regimes, mitigating degenerate static rollouts.
-          </p>
-          <img src="static/images/ablation_wo_guard.jpg"
-               alt="Ablation: without k-guard"
-               style="max-width:100%; height:auto; border-radius:12px;" loading="lazy">
+        <div class="column">
+          <p class="has-text-centered"><strong>With Entropy Guidance (Ours)</strong></p>
+          <video id="entropy-ours" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
+            <source src="static/videos/fig6-ours.mp4" type="video/mp4">
+          </video>
         </div>
-
       </div>
     </div>
-  </div>
-</section>
 
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Visual results of our strategy</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/fig1-ours.mp4" type="video/mp4">
+    <!-- k-Guard ablation -->
+    <div class="box video-comparison">
+      <h3 class="title is-5 has-text-centered">Impact of k-Guard Design</h3>
+      <p class="has-text-centered" style="margin-bottom: 1.5rem;">
+        The k-guard enforces minimal exploration even in low-entropy regimes, mitigating degenerate static rollouts and frame-freezing.
+      </p>
+      <div class="columns is-mobile">
+        <div class="column">
+          <p class="has-text-centered"><strong>Without k-Guard</strong></p>
+          <video id="kguard-wokguard" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
+            <source src="static/videos/fig7-wokguard.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/fig4-drivingworld-ours.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/fig4-vavim-ours.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video4">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video4" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/fig5-cosmos-ours.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video5">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video5" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/fig6-ours.MP4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video6">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video6" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
+        <div class="column">
+          <p class="has-text-centered"><strong>With k-Guard (Ours)</strong></p>
+          <video id="kguard-ours" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
             <source src="static/videos/fig7-ours.mp4" type="video/mp4">
           </video>
         </div>
@@ -591,7 +630,8 @@
     </div>
   </div>
 </section>
-<!-- End video carousel -->
+
+
 
 
 
@@ -611,9 +651,8 @@
       <pre id="bibtex-code"><code>@article{Han2024ENkG,
   title={Entropy-Guided k-Guard Sampling for Long-Horizon Autoregressive Video Generation},
   author={Han, Yizhao and Shi, Tianxing and Wang, Zhao and Xu, Zifan and Pu, Zhiyuan and Li, Mingxiao and Zhang, Qian and Yin, Wei and Long, Xiao-Xiao},
-  journal={arXiv preprint},
-  year={2024},
-  url={https://greanguy.github.io/ENkG/}
+  journal={arXiv preprint arXiv:2406.xxxxx},
+  year={2024}
 }</code></pre>
     </div>
 </section>
