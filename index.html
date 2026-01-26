@@ -287,22 +287,73 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata"> -->
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <!-- <h2 class="subtitle has-text-centered">
-        We propose Entropy-Guided k-Guard (ENkG), a novel sampling strategy that adapts token candidate selection based on entropy to improve long-horizon autoregressive video generation quality and stability.
-      </h2> -->
+        <p class="has-text-left" style="margin-bottom: 1.5rem;"></p>
+      <strong>Long-Horizon Generation (200 frames).</strong>
+    
+        ENkG sustains temporally coherent, texture-preserving rollouts up to 200 frames, substantially reducing drift and collapse artifacts typical of static AR decoding.
+      </p>
+      
+      <div id="teaser-carousel" class="carousel results-carousel">
+        <!-- Long video comparison 1 -->
+        <div class="item video-comparison">
+          <!-- <h3 class="title is-5 has-text-centered">Comparison 1</h3> -->
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-centered"><strong>Static AR Decoding</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/long-12-base.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/long-12-ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- Long video comparison 2 -->
+        <div class="item video-comparison">
+          <!-- <h3 class="title is-5 has-text-centered">Comparison 2</h3> -->
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-centered"><strong>Static AR Decoding</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/long-16-base.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/long-16-ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- Long video comparison 3 -->
+        <div class="item video-comparison">
+          <!-- <h3 class="title is-5 has-text-centered">Comparison 3</h3> -->
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-centered"><strong>Static AR Decoding</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/long-30-base.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
+              <video poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/long-30-ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-<!-- End teaser video -->
-
-<!-- Teaser video-->
-
 <!-- End teaser video -->
 
 <!-- Paper abstract -->
@@ -632,7 +683,7 @@
 
 
 <!--BibTex citation -->
-  <section class="section" id="BibTeX">
+  <!-- <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <div class="bibtex-header">
         <h2 class="title">BibTeX</h2>
@@ -641,14 +692,14 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@article{Han2024ENkG,
+      <pre id="bibtex-code"><code>@article{Han2026ENkG,
   title={Entropy-Guided k-Guard Sampling for Long-Horizon Autoregressive Video Generation},
   author={Han, Yizhao and Shi, Tianxing and Wang, Zhao and Xu, Zifan and Pu, Zhiyuan and Li, Mingxiao and Zhang, Qian and Yin, Wei and Long, Xiao-Xiao},
-  journal={arXiv preprint arXiv:2406.xxxxx},
-  year={2024}
+  journal={arXiv preprint arXiv:2601.xxxxx},
+  year={2026}
 }</code></pre>
     </div>
-</section>
+</section> -->
 <!--End BibTex citation -->
 
 
