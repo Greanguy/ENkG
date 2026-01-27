@@ -155,30 +155,41 @@ function setupSyncedVideoPlayback() {
     }
     
     // Teaser long-horizon comparisons (with faster playback for better viewing)
+    const long1Base = document.getElementById('long-1-base');
+    const long1Ours = document.getElementById('long-1-ours');
+    const long3Base = document.getElementById('long-3-base');
+    const long3Ours = document.getElementById('long-3-ours');
+    const long5Base = document.getElementById('long-5-base');
+    const long5Ours = document.getElementById('long-5-ours');
+    const long8Base = document.getElementById('long-8-base');
+    const long8Ours = document.getElementById('long-8-ours');
     const long12Base = document.getElementById('long-12-base');
     const long12Ours = document.getElementById('long-12-ours');
     const long16Base = document.getElementById('long-16-base');
     const long16Ours = document.getElementById('long-16-ours');
+    const long22Base = document.getElementById('long-22-base');
+    const long22Ours = document.getElementById('long-22-ours');
     const long30Base = document.getElementById('long-30-base');
     const long30Ours = document.getElementById('long-30-ours');
+    const long32Base = document.getElementById('long-32-base');
+    const long32Ours = document.getElementById('long-32-ours');
+    const long36Base = document.getElementById('long-36-base');
+    const long36Ours = document.getElementById('long-36-ours');
+    const long38Base = document.getElementById('long-38-base');
+    const long38Ours = document.getElementById('long-38-ours');
     
-    // Sync teaser long videos with 1.5x playback speed
+    // Sync all teaser long videos with 1.5x playback speed
+    syncVideos(long1Base, long1Ours, 1.5);
+    syncVideos(long3Base, long3Ours, 1.5);
+    syncVideos(long5Base, long5Ours, 1.5);
+    syncVideos(long8Base, long8Ours, 1.5);
     syncVideos(long12Base, long12Ours, 1.5);
     syncVideos(long16Base, long16Ours, 1.5);
+    syncVideos(long22Base, long22Ours, 1.5);
     syncVideos(long30Base, long30Ours, 1.5);
-    
-    // Teaser additional model comparisons
-    const teaserDrivingworldK30 = document.getElementById('teaser-drivingworld-k30');
-    const teaserDrivingworldOurs = document.getElementById('teaser-drivingworld-ours');
-    const teaserVavimGreedy = document.getElementById('teaser-vavim-greedy');
-    const teaserVavimOurs = document.getElementById('teaser-vavim-ours');
-    const teaserCosmosTopp = document.getElementById('teaser-cosmos-topp');
-    const teaserCosmosOurs = document.getElementById('teaser-cosmos-ours');
-    
-    // Sync teaser model comparison videos with 1.5x playback speed
-    syncVideos(teaserDrivingworldK30, teaserDrivingworldOurs, 1.5);
-    syncVideos(teaserVavimGreedy, teaserVavimOurs, 1.5);
-    syncVideos(teaserCosmosTopp, teaserCosmosOurs, 1.5);
+    syncVideos(long32Base, long32Ours, 1.5);
+    syncVideos(long36Base, long36Ours, 1.5);
+    syncVideos(long38Base, long38Ours, 1.5);
     
     // Results carousel comparisons (with normal playback rate)
     const drivingworldK30 = document.getElementById('drivingworld-k30');
