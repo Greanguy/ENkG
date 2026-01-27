@@ -154,7 +154,7 @@ function setupSyncedVideoPlayback() {
         });
     }
     
-    // Teaser long-horizon comparisons (with 5 fps playback rate)
+    // Teaser long-horizon comparisons (with faster playback for better viewing)
     const long12Base = document.getElementById('long-12-base');
     const long12Ours = document.getElementById('long-12-ours');
     const long16Base = document.getElementById('long-16-base');
@@ -162,12 +162,25 @@ function setupSyncedVideoPlayback() {
     const long30Base = document.getElementById('long-30-base');
     const long30Ours = document.getElementById('long-30-ours');
     
-    // Sync teaser videos with 5 fps playback (assuming original is ~30fps, 5/30 ≈ 0.167)
-    syncVideos(long12Base, long12Ours, 0.167);
-    syncVideos(long16Base, long16Ours, 0.167);
-    syncVideos(long30Base, long30Ours, 0.167);
+    // Sync teaser long videos with 1.5x playback speed
+    syncVideos(long12Base, long12Ours, 1.5);
+    syncVideos(long16Base, long16Ours, 1.5);
+    syncVideos(long30Base, long30Ours, 1.5);
     
-    // Results carousel comparisons (with normal 30 fps playback rate)
+    // Teaser additional model comparisons
+    const teaserDrivingworldK30 = document.getElementById('teaser-drivingworld-k30');
+    const teaserDrivingworldOurs = document.getElementById('teaser-drivingworld-ours');
+    const teaserVavimGreedy = document.getElementById('teaser-vavim-greedy');
+    const teaserVavimOurs = document.getElementById('teaser-vavim-ours');
+    const teaserCosmosTopp = document.getElementById('teaser-cosmos-topp');
+    const teaserCosmosOurs = document.getElementById('teaser-cosmos-ours');
+    
+    // Sync teaser model comparison videos with 1.5x playback speed
+    syncVideos(teaserDrivingworldK30, teaserDrivingworldOurs, 1.5);
+    syncVideos(teaserVavimGreedy, teaserVavimOurs, 1.5);
+    syncVideos(teaserCosmosTopp, teaserCosmosOurs, 1.5);
+    
+    // Results carousel comparisons (with normal playback rate)
     const drivingworldK30 = document.getElementById('drivingworld-k30');
     const drivingworldOurs = document.getElementById('drivingworld-ours');
     const vavimGreedy = document.getElementById('vavim-greedy');
@@ -175,22 +188,22 @@ function setupSyncedVideoPlayback() {
     const cosmosTopp = document.getElementById('cosmos-topp');
     const cosmosOurs = document.getElementById('cosmos-ours');
     
-    // Sync results videos with normal playback (30 fps, playbackRate = 1.0)
-    syncVideos(drivingworldK30, drivingworldOurs);
-    syncVideos(vavimGreedy, vavimOurs);
-    syncVideos(cosmosTopp, cosmosOurs);
+    // Sync results videos with normal playback (1.0x)
+    syncVideos(drivingworldK30, drivingworldOurs, 1.0);
+    syncVideos(vavimGreedy, vavimOurs, 1.0);
+    syncVideos(cosmosTopp, cosmosOurs, 1.0);
     
-    // Entropy-adaptive guidance comparison
+    // Entropy-adaptive guidance comparison (1.5x speed)
     const entropyWoentropy = document.getElementById('entropy-woentropy');
     const entropyOurs = document.getElementById('entropy-ours');
     
-    // k-Guard comparison
+    // k-Guard comparison (1.5x speed)
     const kguardWokguard = document.getElementById('kguard-wokguard');
     const kguardOurs = document.getElementById('kguard-ours');
     
-    // Setup ablation study comparisons sync (normal playback rate)
-    syncVideos(entropyWoentropy, entropyOurs);
-    syncVideos(kguardWokguard, kguardOurs);
+    // Setup ablation study comparisons sync with 1.5x playback rate
+    syncVideos(entropyWoentropy, entropyOurs, 1.5);
+    syncVideos(kguardWokguard, kguardOurs, 1.5);
 }
 
 $(document).ready(function() {

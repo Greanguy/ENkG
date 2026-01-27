@@ -288,14 +288,14 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <p class="has-text-left" style="margin-bottom: 1.5rem;">
-        <strong>Long-Horizon Generation (200 frames).</strong>
-        ENkG sustains temporally coherent, texture-preserving rollouts up to 200 frames, substantially reducing drift and collapse artifacts typical of static AR decoding.
+        <strong>Visual Results.</strong>
+        ENkG delivers consistent improvements across multiple autoregressive video generation models, reducing texture wash-out, color drift, and frame freezing while maintaining temporal coherence and structural integrity over long horizons.
       </p>
       
       <div id="teaser-carousel" class="carousel results-carousel">
         <!-- Long video comparison 1 -->
         <div class="item video-comparison">
-          <h3 class="title is-5 has-text-centered">Static AR Decoding vs ENkG (Ours)</h3>
+          <h3 class="title is-5 has-text-centered">Long-Horizon Generation: Static AR Decoding vs ENkG (Ours)</h3>
           <div class="columns is-mobile">
             <div class="column">
               <p class="has-text-centered"><strong>Static AR Decoding</strong></p>
@@ -314,7 +314,7 @@
 
         <!-- Long video comparison 2 -->
         <div class="item video-comparison">
-          <h3 class="title is-5 has-text-centered">Static AR Decoding vs ENkG (Ours)</h3>
+          <h3 class="title is-5 has-text-centered">Long-Horizon Generation: Static AR Decoding vs ENkG (Ours)</h3>
           <div class="columns is-mobile">
             <div class="column">
               <p class="has-text-centered"><strong>Static AR Decoding</strong></p>
@@ -333,7 +333,7 @@
 
         <!-- Long video comparison 3 -->
         <div class="item video-comparison">
-          <h3 class="title is-5 has-text-centered">Static AR Decoding vs ENkG (Ours)</h3>
+          <h3 class="title is-5 has-text-centered">Long-Horizon Generation: Static AR Decoding vs ENkG (Ours)</h3>
           <div class="columns is-mobile">
             <div class="column">
               <p class="has-text-centered"><strong>Static AR Decoding</strong></p>
@@ -345,6 +345,63 @@
               <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
               <video id="long-30-ours" poster="" controls muted loop height="100%" preload="metadata">
                 <source src="static/videos/long-30-ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- DrivingWorld Comparison -->
+        <div class="item video-comparison">
+          <h3 class="title is-5 has-text-centered">DrivingWorld: Top-k (k=30) vs ENkG (Ours)</h3>
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-centered"><strong>Top-k (k=30)</strong></p>
+              <video id="teaser-drivingworld-k30" poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/drivingworld-k30.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
+              <video id="teaser-drivingworld-ours" poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/drivingworld-ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- VaVIM Comparison -->
+        <div class="item video-comparison">
+          <h3 class="title is-5 has-text-centered">VaVIM: Greedy vs ENkG (Ours)</h3>
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-centered"><strong>Greedy</strong></p>
+              <video id="teaser-vavim-greedy" poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/fig4-vavim-greedy.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
+              <video id="teaser-vavim-ours" poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/fig4-vavim-ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cosmos Comparison -->
+        <div class="item video-comparison">
+          <h3 class="title is-5 has-text-centered">Cosmos: Top-p (p=0.8) vs ENkG (Ours)</h3>
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-centered"><strong>Top-p (p=0.8)</strong></p>
+              <video id="teaser-cosmos-topp" poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/fig5-cosmos-topp08.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
+              <video id="teaser-cosmos-ours" poster="" controls muted loop height="100%" preload="metadata">
+                <source src="static/videos/fig5-cosmos-ours.mp4" type="video/mp4">
               </video>
             </div>
           </div>
