@@ -119,62 +119,100 @@ function setupVideoCarouselAutoplay() {
     });
 }
 
+// Enable autoplay for all videos
+function initializeAllVideoAutoplay() {
+    const allVideos = document.querySelectorAll('video');
+    
+    allVideos.forEach((video) => {
+        // Set autoplay attributes
+        video.autoplay = true;
+        video.muted = true;
+        video.playsInline = true;
+        
+        // Try to play immediately
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                // Autoplay was prevented, will be triggered by user interaction or scroll
+                console.log('Autoplay prevented for video:', video.id, error);
+            });
+        }
+        
+        // Add intersection observer for videos not yet visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.play().catch(() => {});
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        observer.observe(video);
+    });
+}
+
 // Enable autoplay for all videos and sync paired comparisons
 function setupSyncedVideoPlayback() {
-    function isTeaserVideo(video) {
-        return video.classList.contains('teaser-video');
-    }
-
-    function getTargetPlaybackRate(video) {
-        return isTeaserVideo(video) ? 1.0 : 3.0;
-    }
-
     function applyAutoplayDefaults(video) {
         video.autoplay = true;
         video.muted = true;
         video.playsInline = true;
     }
 
-    function syncVideos(video1, video2) {
-        if (!video1 || !video2) return;
-
-        const playbackRate = getTargetPlaybackRate(video1);
-        video1.playbackRate = playbackRate;
-        video2.playbackRate = playbackRate;
+    function syncVideos(primary, secondary) {
+        if (!primary || !secondary) return;
 
         let isSyncing = false;
         const syncTime = (source, target) => {
             if (isSyncing) return;
-            if (Math.abs(source.currentTime - target.currentTime) > 0.15) {
+            if (Math.abs(source.currentTime - target.currentTime) > 0.08) {
                 isSyncing = true;
                 target.currentTime = source.currentTime;
                 isSyncing = false;
             }
         };
 
-        video1.addEventListener('play', function() {
-            if (video2.paused) video2.play().catch(() => {});
+        const syncRate = () => {
+            secondary.playbackRate = primary.playbackRate;
+        };
+
+        primary.addEventListener('loadedmetadata', function() {
+            secondary.currentTime = primary.currentTime;
+            syncRate();
         });
-        video2.addEventListener('play', function() {
-            if (video1.paused) video1.play().catch(() => {});
+
+        primary.addEventListener('play', function() {
+            syncTime(primary, secondary);
+            secondary.play().catch(() => {});
         });
-        video1.addEventListener('pause', function() {
-            if (!video2.paused) video2.pause();
+        primary.addEventListener('pause', function() {
+            secondary.pause();
         });
-        video2.addEventListener('pause', function() {
-            if (!video1.paused) video1.pause();
+        primary.addEventListener('timeupdate', function() {
+            syncTime(primary, secondary);
         });
-        video1.addEventListener('timeupdate', function() {
-            syncTime(video1, video2);
+        primary.addEventListener('seeking', function() {
+            syncTime(primary, secondary);
         });
-        video2.addEventListener('timeupdate', function() {
-            syncTime(video2, video1);
+        primary.addEventListener('ratechange', syncRate);
+
+        // Allow user-initiated control from the secondary video.
+        secondary.addEventListener('play', function(event) {
+            if (!event.isTrusted) return;
+            syncTime(secondary, primary);
+            primary.play().catch(() => {});
         });
-        video1.addEventListener('seeking', function() {
-            syncTime(video1, video2);
+        secondary.addEventListener('pause', function(event) {
+            if (!event.isTrusted) return;
+            primary.pause();
         });
-        video2.addEventListener('seeking', function() {
-            syncTime(video2, video1);
+        secondary.addEventListener('seeking', function(event) {
+            if (!event.isTrusted) return;
+            syncTime(secondary, primary);
+        });
+        secondary.addEventListener('ratechange', function(event) {
+            if (!event.isTrusted) return;
+            primary.playbackRate = secondary.playbackRate;
         });
     }
 
@@ -185,18 +223,12 @@ function setupSyncedVideoPlayback() {
             syncVideos(videos[0], videos[1]);
         }
     });
-
-    const allVideos = document.querySelectorAll('video');
-    allVideos.forEach((video) => {
-        applyAutoplayDefaults(video);
-        video.playbackRate = getTargetPlaybackRate(video);
-        video.play().catch(() => {});
-    });
 }
 
 $(document).ready(function() {
-    // Check for click events on the navbar burger icon
-
+    // Initialize all video autoplay
+    initializeAllVideoAutoplay();
+    
     var options = {
 		slidesToScroll: 1,
 		slidesToShow: 1,

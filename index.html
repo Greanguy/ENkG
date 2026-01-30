@@ -266,91 +266,28 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <p class="has-text-left" style="margin-bottom: 1.5rem;">
-        <strong>Long-Horizon Generation (200 frames).</strong>
-        ENkG sustains temporally coherent, texture-preserving rollouts up to 200 frames, substantially reducing drift and collapse artifacts typical of static AR decoding.
-      </p>
-
-      <!-- Row 1 -->
-      <div class="box video-comparison" style="margin-bottom: 0.5rem;">
-        <div class="columns is-mobile" style="margin: 0;">
-          <div class="column">
-            <p class="has-text-centered"><strong>Static AR Decoding</strong></p>
-            <video id="long-1-base" poster="" controls muted autoplay loop height="100%" preload="metadata" playsinline class="teaser-video">
-              <source src="static/videos/long-1-base.mp4" type="video/mp4">
-            </video>
+      <div class="has-text-centered" style="margin-bottom: 1.5rem;">
+        <p style="margin-bottom: 0.5rem;">
+          <strong style="font-size: 1.1rem;">Long-Horizon Generation (200 frames)</strong>
+        </p>
+        <p style="margin-bottom: 1rem; color: #666;">
+          ENkG sustains temporally coherent, texture-preserving rollouts up to 200 frames, substantially reducing drift and collapse artifacts typical of static AR decoding.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 4rem; font-size: 0.95rem; font-weight: 500;">
+          <div>
+            <span style="color: #0066cc; font-weight: 600;">← Static AR Decoding</span>
           </div>
-          <div class="column">
-            <p class="has-text-centered"><strong>ENkG (Ours)</strong></p>
-            <video id="long-1-ours" poster="" controls muted autoplay loop height="100%" preload="metadata" playsinline class="teaser-video">
-              <source src="static/videos/long-1-ours.mp4" type="video/mp4">
-            </video>
+          <div style="border-left: 2px solid #ddd; padding-left: 4rem;"></div>
+          <div>
+            <span style="color: #00a86b; font-weight: 600;">ENkG (Ours) →</span>
           </div>
         </div>
       </div>
 
-      <!-- Row 2 -->
-      <div class="box video-comparison" style="margin-bottom: 0.5rem;">
-        <div class="columns is-mobile" style="margin: 0;">
-          <div class="column">
-            <video id="long-3-base" poster="" controls muted autoplay loop height="100%" preload="metadata" playsinline class="teaser-video">
-              <source src="static/videos/long-3-base.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="column">
-            <video id="long-3-ours" poster="" controls muted autoplay loop height="100%" preload="metadata" playsinline class="teaser-video">
-              <source src="static/videos/long-3-ours.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 3 -->
-      <div class="box video-comparison" style="margin-bottom: 0.5rem;">
-        <div class="columns is-mobile" style="margin: 0;">
-          <div class="column">
-            <video id="long-8-base" poster="" controls muted autoplay loop height="100%" preload="metadata" playsinline class="teaser-video">
-              <source src="static/videos/long-8-base.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="column">
-            <video id="long-8-ours" poster="" controls muted autoplay loop height="100%" preload="metadata" playsinline class="teaser-video">
-              <source src="static/videos/long-8-ours.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 4 -->
-      <div class="box video-comparison" style="margin-bottom: 0.5rem;">
-        <div class="columns is-mobile" style="margin: 0;">
-          <div class="column">
-            <video id="long-22-base" poster="" controls muted autoplay loop height="100%" preload="metadata" playsinline class="teaser-video">
-              <source src="static/videos/long-22-base.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="column">
-            <video id="long-22-ours" poster="" controls muted autoplay loop height="100%" preload="metadata" playsinline class="teaser-video">
-              <source src="static/videos/long-22-ours.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 5 -->
-      <div class="box video-comparison" style="margin-bottom: 0.5rem;">
-        <div class="columns is-mobile" style="margin: 0;">
-          <div class="column">
-            <video id="long-36-base" poster="" controls muted autoplay loop height="100%" preload="metadata" playsinline class="teaser-video">
-              <source src="static/videos/long-36-base.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="column">
-            <video id="long-36-ours" poster="" controls muted autoplay loop height="100%" preload="metadata" playsinline class="teaser-video">
-              <source src="static/videos/long-36-ours.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
+      <div class="box" style="margin-bottom: 0.5rem;">
+        <video id="teaser-combined" controls muted autoplay loop width="100%" preload="auto" playsinline class="teaser-video">
+          <source src="static/videos/teaser_combined.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </div>
@@ -482,7 +419,7 @@
   </div>
 </section>
 
-<section class="hero teaser">
+<section class="hero teaser results-section">
   <div class="container is-max-desktop">
     <div class="hero-body">
      <h2 class="title is-3 has-text-centered">Results</h2>
@@ -637,13 +574,13 @@
       <div class="columns is-mobile">
         <div class="column">
           <p class="has-text-centered"><strong>Without Entropy Guidance</strong></p>
-          <video id="entropy-woentropy" poster="" controls muted autoplay loop width="100%" preload="metadata" style="border-radius:8px;" playsinline>
+          <video id="entropy-woentropy" controls muted autoplay loop width="100%" preload="metadata" style="border-radius:8px;" playsinline>
             <source src="static/videos/fig6-woentropy.mp4" type="video/mp4">
           </video>
         </div>
         <div class="column">
           <p class="has-text-centered"><strong>With Entropy Guidance (Ours)</strong></p>
-          <video id="entropy-ours" poster="" controls muted autoplay loop width="100%" preload="metadata" style="border-radius:8px;" playsinline>
+          <video id="entropy-ours" controls muted autoplay loop width="100%" preload="metadata" style="border-radius:8px;" playsinline>
             <source src="static/videos/fig6-ours.mp4" type="video/mp4">
           </video>
         </div>
@@ -659,13 +596,13 @@
       <div class="columns is-mobile">
         <div class="column">
           <p class="has-text-centered"><strong>Without k-Guard</strong></p>
-          <video id="kguard-wokguard" poster="" controls muted autoplay loop width="100%" preload="metadata" style="border-radius:8px;" playsinline>
+          <video id="kguard-wokguard" controls muted autoplay loop width="100%" preload="metadata" style="border-radius:8px;" playsinline>
             <source src="static/videos/fig7-wokguard.mp4" type="video/mp4">
           </video>
         </div>
         <div class="column">
           <p class="has-text-centered"><strong>With k-Guard (Ours)</strong></p>
-          <video id="kguard-ours" poster="" controls muted autoplay loop width="100%" preload="metadata" style="border-radius:8px;" playsinline>
+          <video id="kguard-ours" controls muted autoplay loop width="100%" preload="metadata" style="border-radius:8px;" playsinline>
             <source src="static/videos/fig7-ours.mp4" type="video/mp4">
           </video>
         </div>
