@@ -119,102 +119,79 @@ function setupVideoCarouselAutoplay() {
     });
 }
 
-// Synchronized video playback for ablation study comparisons
+// Enable autoplay for all videos and sync paired comparisons
 function setupSyncedVideoPlayback() {
-    // Helper function to sync two videos
-    function syncVideos(video1, video2, playbackRate = 1.0) {
+    function isTeaserVideo(video) {
+        return video.classList.contains('teaser-video');
+    }
+
+    function getTargetPlaybackRate(video) {
+        return isTeaserVideo(video) ? 1.0 : 3.0;
+    }
+
+    function applyAutoplayDefaults(video) {
+        video.autoplay = true;
+        video.muted = true;
+        video.playsInline = true;
+    }
+
+    function syncVideos(video1, video2) {
         if (!video1 || !video2) return;
-        
-        // Set playback rate (fps control)
+
+        const playbackRate = getTargetPlaybackRate(video1);
         video1.playbackRate = playbackRate;
         video2.playbackRate = playbackRate;
-        
+
+        let isSyncing = false;
+        const syncTime = (source, target) => {
+            if (isSyncing) return;
+            if (Math.abs(source.currentTime - target.currentTime) > 0.15) {
+                isSyncing = true;
+                target.currentTime = source.currentTime;
+                isSyncing = false;
+            }
+        };
+
         video1.addEventListener('play', function() {
-            video2.play();
+            if (video2.paused) video2.play().catch(() => {});
+        });
+        video2.addEventListener('play', function() {
+            if (video1.paused) video1.play().catch(() => {});
         });
         video1.addEventListener('pause', function() {
-            video2.pause();
-        });
-        video1.addEventListener('timeupdate', function() {
-            if (Math.abs(video1.currentTime - video2.currentTime) > 0.5) {
-                video2.currentTime = video1.currentTime;
-            }
-        });
-        
-        video2.addEventListener('play', function() {
-            video1.play();
+            if (!video2.paused) video2.pause();
         });
         video2.addEventListener('pause', function() {
-            video1.pause();
+            if (!video1.paused) video1.pause();
+        });
+        video1.addEventListener('timeupdate', function() {
+            syncTime(video1, video2);
         });
         video2.addEventListener('timeupdate', function() {
-            if (Math.abs(video2.currentTime - video1.currentTime) > 0.5) {
-                video1.currentTime = video2.currentTime;
-            }
+            syncTime(video2, video1);
+        });
+        video1.addEventListener('seeking', function() {
+            syncTime(video1, video2);
+        });
+        video2.addEventListener('seeking', function() {
+            syncTime(video2, video1);
         });
     }
-    
-    // Teaser long-horizon comparisons (with faster playback for better viewing)
-    const long1Base = document.getElementById('long-1-base');
-    const long1Ours = document.getElementById('long-1-ours');
-    const long3Base = document.getElementById('long-3-base');
-    const long3Ours = document.getElementById('long-3-ours');
-    const long5Base = document.getElementById('long-5-base');
-    const long5Ours = document.getElementById('long-5-ours');
-    const long8Base = document.getElementById('long-8-base');
-    const long8Ours = document.getElementById('long-8-ours');
-    const long12Base = document.getElementById('long-12-base');
-    const long12Ours = document.getElementById('long-12-ours');
-    const long16Base = document.getElementById('long-16-base');
-    const long16Ours = document.getElementById('long-16-ours');
-    const long22Base = document.getElementById('long-22-base');
-    const long22Ours = document.getElementById('long-22-ours');
-    const long30Base = document.getElementById('long-30-base');
-    const long30Ours = document.getElementById('long-30-ours');
-    const long32Base = document.getElementById('long-32-base');
-    const long32Ours = document.getElementById('long-32-ours');
-    const long36Base = document.getElementById('long-36-base');
-    const long36Ours = document.getElementById('long-36-ours');
-    const long38Base = document.getElementById('long-38-base');
-    const long38Ours = document.getElementById('long-38-ours');
-    
-    // Sync all teaser long videos with 1.5x playback speed
-    syncVideos(long1Base, long1Ours, 1.5);
-    syncVideos(long3Base, long3Ours, 1.5);
-    syncVideos(long5Base, long5Ours, 1.5);
-    syncVideos(long8Base, long8Ours, 1.5);
-    syncVideos(long12Base, long12Ours, 1.5);
-    syncVideos(long16Base, long16Ours, 1.5);
-    syncVideos(long22Base, long22Ours, 1.5);
-    syncVideos(long30Base, long30Ours, 1.5);
-    syncVideos(long32Base, long32Ours, 1.5);
-    syncVideos(long36Base, long36Ours, 1.5);
-    syncVideos(long38Base, long38Ours, 1.5);
-    
-    // Results carousel comparisons (with normal playback rate)
-    const drivingworldK30 = document.getElementById('drivingworld-k30');
-    const drivingworldOurs = document.getElementById('drivingworld-ours');
-    const vavimGreedy = document.getElementById('vavim-greedy');
-    const vavimOurs = document.getElementById('vavim-ours');
-    const cosmosTopp = document.getElementById('cosmos-topp');
-    const cosmosOurs = document.getElementById('cosmos-ours');
-    
-    // Sync results videos with normal playback (1.0x)
-    syncVideos(drivingworldK30, drivingworldOurs, 1.0);
-    syncVideos(vavimGreedy, vavimOurs, 1.0);
-    syncVideos(cosmosTopp, cosmosOurs, 1.0);
-    
-    // Entropy-adaptive guidance comparison (1.5x speed)
-    const entropyWoentropy = document.getElementById('entropy-woentropy');
-    const entropyOurs = document.getElementById('entropy-ours');
-    
-    // k-Guard comparison (1.5x speed)
-    const kguardWokguard = document.getElementById('kguard-wokguard');
-    const kguardOurs = document.getElementById('kguard-ours');
-    
-    // Setup ablation study comparisons sync with 1.5x playback rate
-    syncVideos(entropyWoentropy, entropyOurs, 1.5);
-    syncVideos(kguardWokguard, kguardOurs, 1.5);
+
+    const comparisons = document.querySelectorAll('.video-comparison');
+    comparisons.forEach((comparison) => {
+        const videos = comparison.querySelectorAll('video');
+        if (videos.length === 2) {
+            syncVideos(videos[0], videos[1]);
+        }
+    });
+
+    const allVideos = document.querySelectorAll('video');
+    allVideos.forEach((video) => {
+        applyAutoplayDefaults(video);
+        video.playbackRate = getTargetPlaybackRate(video);
+        video.play().catch(() => {});
+    });
 }
 
 $(document).ready(function() {

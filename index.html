@@ -637,13 +637,13 @@
       <div class="columns is-mobile">
         <div class="column">
           <p class="has-text-centered"><strong>Without Entropy Guidance</strong></p>
-          <video id="entropy-woentropy" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
+          <video id="entropy-woentropy" poster="" controls muted autoplay loop width="100%" preload="metadata" style="border-radius:8px;" playsinline>
             <source src="static/videos/fig6-woentropy.mp4" type="video/mp4">
           </video>
         </div>
         <div class="column">
           <p class="has-text-centered"><strong>With Entropy Guidance (Ours)</strong></p>
-          <video id="entropy-ours" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
+          <video id="entropy-ours" poster="" controls muted autoplay loop width="100%" preload="metadata" style="border-radius:8px;" playsinline>
             <source src="static/videos/fig6-ours.mp4" type="video/mp4">
           </video>
         </div>
@@ -659,13 +659,13 @@
       <div class="columns is-mobile">
         <div class="column">
           <p class="has-text-centered"><strong>Without k-Guard</strong></p>
-          <video id="kguard-wokguard" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
+          <video id="kguard-wokguard" poster="" controls muted autoplay loop width="100%" preload="metadata" style="border-radius:8px;" playsinline>
             <source src="static/videos/fig7-wokguard.mp4" type="video/mp4">
           </video>
         </div>
         <div class="column">
-          <p class="has-text-left"><strong>With k-Guard (Ours)</strong></p>
-          <video id="kguard-ours" poster="" controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
+          <p class="has-text-centered"><strong>With k-Guard (Ours)</strong></p>
+          <video id="kguard-ours" poster="" controls muted autoplay loop width="100%" preload="metadata" style="border-radius:8px;" playsinline>
             <source src="static/videos/fig7-ours.mp4" type="video/mp4">
           </video>
         </div>
@@ -728,17 +728,6 @@
 <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
     <!-- End of Statcounter Code -->
-
-    <!-- Accelerate teaser videos -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Speed up teaser videos to 3.5x
-        const teaserVideos = document.querySelectorAll('.teaser-video');
-        teaserVideos.forEach(function(video) {
-          video.playbackRate = 3.5;
-        });
-      });
-    </script>
 
   </body>
   </html>
